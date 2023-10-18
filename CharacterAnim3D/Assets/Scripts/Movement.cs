@@ -54,8 +54,20 @@ public class Movement : MonoBehaviour
             animator.SetBool("isAttacking", false);
         }
 
+        //Blocks once when right click is pressed
+        if (Input.GetMouseButton(1) && !animator.GetBool("isBlocking"))
+        {
+            animator.SetBool("isBlocking", true);
+        }
+
+        //Stops blocking
+        if (animator.GetBool("isBlocking") && !Input.GetMouseButton(1))
+        {
+            animator.SetBool("isBlocking", false);
+        }
+
         //Jumps when space is pressed
-        if(Input.GetKey(KeyCode.Space) && !animator.GetBool("isJumping"))
+        if (Input.GetKey(KeyCode.Space) && !animator.GetBool("isJumping"))
         {
             animator.SetBool("isJumping", true);
         }
